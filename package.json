@@ -1,0 +1,35 @@
+{
+  "name": "electrobun-react-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun scripts/dev.ts",
+    "dev:vite": "vite --port 5173",
+    "dev:bun": "bun scripts/dev-bun.ts",
+    "build": "vite build && electrobun build"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-query": "^5.90.21",
+    "@tanstack/react-router": "^1.159.5",
+    "electrobun": "latest",
+    "lucide-react": "^0.563.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.18"
+  },
+  "patchedDependencies": {
+    "electrobun@1.12.3": "patches/electrobun@1.12.3.patch"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^25.2.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  }
+}

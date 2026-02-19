@@ -1,0 +1,34 @@
+--- a/dist/api/bun/core/BrowserView.ts
++++ b/dist/api/bun/core/BrowserView.ts
+@@ -321,8 +321,12 @@
+ 	}
+ 
+ 	static defineRPC<Schema extends ElectrobunRPCSchema>(
+-		config: ElectrobunRPCConfig<Schema, "bun">,
++	        config: ElectrobunRPCConfig<Schema, "bun">,
+ 	) {
+-		return defineElectrobunRPC("bun", config);
++	        return defineElectrobunRPC("bun", config);
++	}
++
++	static onTagCreated(handler: (view: BrowserView) => void) {
++		electrobunEventEmitter.on("webview-tag-created", handler);
+ 	}
+ }
+--- a/dist/api/bun/proc/native.ts
++++ b/dist/api/bun/proc/native.ts
+@@ -2136,10 +2136,12 @@
+ 				navigationRules,
+ 				sandbox,
+ 			});
++
++			electrobunEventEmitter.emit("webview-tag-created", webviewForTag);
+ 
+ 			return webviewForTag.id;
+-		},
+-		webviewTagCanGoBack: (params: { id: number }) => {
++			},
++			webviewTagCanGoBack: (params: { id: number }) => {
+ 			const { id } = params;
+ 			const webviewPtr = BrowserView.getById(id)?.ptr;
+ 			if (!webviewPtr) {
