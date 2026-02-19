@@ -25,7 +25,7 @@ function RootLayout() {
           <button
             onClick={() =>
               import("./rpc").then(({ openExternal }) =>
-                openExternal("https://github.com/Ataraxy-Labs/electrobun-react-demo")
+                openExternal("https://github.com/Ataraxy-Labs/electrobun-react-starter")
               )
             }
             className="flex items-center gap-2 px-3 py-2 w-full text-xs text-white/30 hover:text-white/60 transition-colors rounded-lg hover:bg-white/5"
